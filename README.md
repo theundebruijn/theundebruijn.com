@@ -33,7 +33,7 @@ _a couple examples:_
 
 Instead of leveraging an existing front-end framework it fully relies on [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). I was curious how far they've come along and can provide a "browser-native" alternative to `react`, `vue` etc.
 
-Without going into detail here, consider me impressed. Leveraging the browser's shadow dom they provide excellent separation of concerns (including scoped `css`), without the need for any exernal libraries.
+Without going into detail here, consider me impressed. Leveraging the browser's shadow dom they provide excellent separation of concerns (including scoped `css`), without the need for any external libraries.
 
 By utilizing a shared [base component](_src/_common/baseComponent/BaseComponent.ts) we can easily inherit a base class that ensures a common set of functionality for every component. I didn't push this as far as it can go, but modern JavaScript's composability seems excellent, and super flexible for building more complex projects without relying on third party frameworks.
 
@@ -53,7 +53,7 @@ The bulk of the complexity lies in the [Feathers component](_src/_pages/home/_co
 
 _Some things that you might find interesting here:_
 
-- If supported, it leverages the [P3 color space](_src/_pages/home/_components/feathers/Feathers.ts#L222). I feel modern web projects should all be targetting this as mobile support is near universal, and laptops/desktops are rapidly catching up. All assets are "mastered" in this color space as opposed to sRGB.
+- If supported, it leverages the [P3 color space](_src/_pages/home/_components/feathers/Feathers.ts#L222). I feel modern web projects should all be targeting this as mobile support is near universal, and laptops/desktops are rapidly catching up. All assets are "mastered" in this color space as opposed to sRGB.
 
 - As explained further on in this document, [ktx texture compression](_src/_pages/home/_components/feathers/Feathers.ts#L272) is used, in addition to (Google's) [Draco mesh compression](_src/_pages/home/_components/feathers/Feathers.ts#L278). Specific loaders make sure these assets load correctly, without blocking the browser's main thread.
 
@@ -79,7 +79,7 @@ As mentioned, they're not used a lot in this particular project, but I recommend
 
 `bun ^1.1.21`
 `node ^22.5.1`
-`bun ^10.8.2`
+`npm ^10.8.2`
 
 While the output of the project is a fully static website, `bun` is used for both building and running a local dev server.
 
@@ -95,7 +95,7 @@ Without getting too into the weeds, it's being used to convert the textures that
 
 If there's one takeaway you get from this; is that when uploading textures to the gpu in non-native formats (`webp`, `png`) a conversion takes place that _will_ block the main render loop and causes the browser's (or `Electron`'s) main thread to stall.  
 
-Using `ktx` as an intermediate prevent this and ensures smooth loading of assets. Even on mobile platforms.
+Using `ktx` as an intermediate prevents this and ensures smooth loading of assets. Even on mobile platforms.
 
 ```
 //////////////////
