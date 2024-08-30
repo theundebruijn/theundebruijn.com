@@ -1,0 +1,86 @@
+<!-- can we actually ditch most of this? https://google.github.io/styleguide/htmlcssguide.html#Optional_Tags -->
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <!-- unicode text converter (sans-serif bold)  -->
+    <title>Theun de Bruijn / Creative Technologist / Now Available</title>
+    <meta name="description" content="Theun de Bruijn, Creative Technologist. Ready to help your creative teams ideate, sell & deliver their best work. Now Available." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <!-- https://developers.google.com/search/reference/robots_meta_tag -->
+    <meta name="robots" content="noarchive, notranslate, noai, noimageai, max-image-preview:large, max-video-preview:large" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="" />
+    <link rel="apple-touch-icon" type="image/png" href="" />
+    <!-- https://ogp.me / https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:title" content="Theun de Bruijn, Creative Technologist, Now Available" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.theundebruijn.com" />
+    <meta property="og:description" content="Theun de Bruijn, Creative Technologist. Ready to help your creative teams ideate, sell & deliver their best work. Now Available." />
+    <meta property="og:image" content="https://www.theundebruijn.com/_assets/_opengraph/theundebruijn_opengraph_image_2400x1260.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:alt" content="An image combining realtime 3D feathers, a game controller and a classic Dutch bicycle. On top it features 3 lines of text saying 'Now Available', 'Creative Technologist', 'theun@theundebruijn.com'." />
+    <!-- twitter + discord / https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root
+      {
+        color-scheme: dark;
+      }
+
+      body
+      {
+        overflow-y: hidden;
+        margin: 0;
+        min-width: 320px;
+        cursor: none;
+        background-color: #000;
+      }
+
+      html.lenis, html.lenis body
+      {
+        height: auto;
+      }
+
+      .lenis.lenis-smooth
+      {
+        scroll-behavior: auto !important;
+      }
+
+      .lenis.lenis-smooth [data-lenis-prevent]
+      {
+        overscroll-behavior: contain;
+      }
+
+      .lenis.lenis-stopped
+      {
+        overflow: hidden;
+      }
+
+      .lenis.lenis-scrolling iframe
+      {
+        pointer-events: none;
+      }
+    </style>
+    <script type="module" blocking="render" src="<insert page component>"></script>
+  </head>
+  <body>
+    <script>
+      document.documentElement.scrollTop = 0;
+      // prevent middle mouse scrolling
+      // calling the script here is more performant than a domready check
+      // and we need the document.body available
+      document.body.onmousedown = function(e)
+      {
+        if (e.button === 1) e.preventDefault();
+      };
+    </script>
+  </body>
+</html>

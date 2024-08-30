@@ -1,0 +1,58 @@
+{
+  "name": "broke0000-private",
+  "description": "test",
+  "version": "0.0.1",
+  "author": "test",
+  "# main": "entrypoint for electron builds. ignored by others.",
+  "main": "./_build/electron.js",
+  "dependencies":
+  {
+    "async": "3.2.5",
+    "detect-browser": "5.3.0",
+    "detect-gpu": "5.0.40",
+    "flyd": "0.2.8",
+    "gsap": "3.12.5",
+    "lenis": "1.1.6",
+    "three": "0.166.1",
+    "@darkroom.engineering/tempus": "0.0.46",
+    "@rive-app/canvas-lite": "2.19.4"
+  },
+  "devDependencies":
+  {
+    "chokidar": "3.6.0",
+    "draco3dgltf": "1.5.7",
+    "electron": "31.2.1",
+    "electron-builder": "24.13.3",
+    "html-minifier-terser": "7.2.0",
+    "sharp": "0.33.4",
+    "taze": "0.16.1",
+    "@gltf-transform/core": "4.0.8",
+    "@gltf-transform/extensions": "4.0.8",
+    "@gltf-transform/functions": "4.0.8",
+    "@gltf-transform/cli": "4.0.8",
+    "@types/bun": "1.1.6",
+    "@types/three": "0.166.0"
+  },
+  "optionalDependencies":
+  {
+    "# dmg-license": "optional dependency as it only supports macOS.",
+    "dmg-license": "1.0.11"
+  },
+  "scripts":
+  {
+    "# check-deps": "only checks for dependency updates. manually update package.json to prevent it being rewritten.",
+    "check-deps": "./node_modules/.bin/taze latest --include-locked --exclude '/#/' --force",
+
+    "gLTF": "bun run ./_meta/bun/gLTF.ts",
+
+    "client-web-dev": "bun run --inspect ./_meta/bun/Builder.ts --web-dev",
+    "client-web-prod": "bun run ./_meta/bun/Builder.ts --web-prod",
+    "client-electron": "bun run ./_meta/bun/Builder.ts --electron",
+
+    "# electron-*": "individual build commands for the electron apps. the front end client needs to be build first",
+    "electron-win_x64": "./node_modules/.bin/electron-builder build --win --x64 --config ./_meta/electron/config_win_x64.json",
+    "electron-mac_x64": "./node_modules/.bin/electron-builder build --mac --x64 --config ./_meta/electron/config_mac_x64.json",
+    "electron-mac_arm64": "./node_modules/.bin/electron-builder build --mac --arm64 --config ./_meta/electron/config_mac_arm64.json",
+    "electron-linux_x64": "./node_modules/.bin/electron-builder build --linux --x64 --config ./_meta/electron/config_linux_x64.json"
+  }
+}

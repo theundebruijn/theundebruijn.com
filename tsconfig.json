@@ -1,0 +1,15 @@
+{
+  "compilerOptions":
+  {
+    "baseUrl": "./_src",
+    "paths": {
+      "__root__/*": ["./*"]
+    },
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  }
+}

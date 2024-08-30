@@ -1,0 +1,17 @@
+{
+  "appId": "com.broke.studio",
+  "productName": "test",
+  "copyright": "test",
+  "directories":
+  {
+    "output": "./_electron/linux_x64/"
+  },
+  "files": "./_build/",
+  "asar": true,
+  "linux":
+  {
+    "category": "AudioVideo",
+    "target": "AppImage",
+    "icon": "./_meta/electron/_assets/test.icns"
+  }
+}

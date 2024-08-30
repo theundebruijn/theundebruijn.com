@@ -1,0 +1,17 @@
+{
+  "appId": "com.broke.studio",
+  "productName": "test",
+  "copyright": "test",
+  "directories":
+  {
+    "output": "./_electron/win_x64/"
+  },
+  "files": "./_build/",
+  "asar": true,
+  "win":
+  {
+    "target": "zip",
+    "icon": "./_meta/electron/_assets/test.ico",
+    "signAndEditExecutable": false
+  }
+}

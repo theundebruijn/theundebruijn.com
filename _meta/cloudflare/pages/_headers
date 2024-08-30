@@ -1,0 +1,20 @@
+https://broke0000-private.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://preview.broke0000-private.pages.dev/*
+  X-Robots-Tag: noindex
+
+/_assets/_benchmarks/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/_assets/_draco/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/_assets/_basis/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0

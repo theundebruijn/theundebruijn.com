@@ -1,0 +1,56 @@
+#Home
+{}
+
+#riveMousePointer
+{
+  position: fixed;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+@media screen
+{
+  #riveEye
+  {
+    position: fixed;
+    z-index: 2;
+    top: 50px;
+    right: 50px;
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @media screen and (max-width: 1360px)
+  {
+    @media screen and (max-width: 1152px)
+    {
+      @media screen and (max-width: 896px)
+      {
+
+        @media screen and (max-width: 624px)
+        {
+          #riveEye
+          {
+            width: 16px;
+            height: 16px;
+          }
+
+          @media screen and (max-width: 389px)
+          {
+            #riveEye
+            {
+              top: 30px;
+              right: 20px;
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

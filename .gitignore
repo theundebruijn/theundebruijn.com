@@ -1,0 +1,12 @@
+# bun
+node_modules/
+bun.lockb
+
+# artifacts
+_build/
+_electron/
+_blender/
+
+# ssl
+*.key
+*.crt
