@@ -1,7 +1,7 @@
 ```
 /////////////////////////////
 ///// THEUNDEBRUIJN.COM /////
-////////////////////////////
+/////////////////////////////
 ```
 
 Hello!
@@ -33,9 +33,9 @@ _a couple examples:_
 
 Instead of leveraging an existing front-end framework it fully relies on [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). I was curious how far they've come along and can provide a "browser-native" alternative to `react`, `vue` etc.
 
-Without going into detail here, consider me impressed. Leveraging the browser's shadow dom they provide excellent separation of concerns (including scoped css), without the need for any exernal frameworks.
+Without going into detail here, consider me impressed. Leveraging the browser's shadow dom they provide excellent separation of concerns (including scoped `css`), without the need for any exernal libraries.
 
-By utilizing a shared [base component](_src/_common/baseComponent/BaseComponent.ts) we can easily inherit a base class that ensures a common set of functionality for every component. I didn't push this as far as it can go, but modern JavaScript's composability seems excellent, and super flexible, for building more complex projects without relying on third party frameworks.
+By utilizing a shared [base component](_src/_common/baseComponent/BaseComponent.ts) we can easily inherit a base class that ensures a common set of functionality for every component. I didn't push this as far as it can go, but modern JavaScript's composability seems excellent, and super flexible for building more complex projects without relying on third party frameworks.
 
 `Async/Await vs Callbacks`
 
@@ -58,7 +58,7 @@ _Some things that you might find interesting here:_
 - As explained further on in this document, [ktx texture compression](_src/_pages/home/_components/feathers/Feathers.ts#L272) is used, in addition to (Google's) [Draco mesh compression](_src/_pages/home/_components/feathers/Feathers.ts#L278). Specific loaders make sure these assets load correctly, without blocking the browser's main thread.
 
 - 3D meshes [support "full" transparency](_src/_pages/home/_components/feathers/Feathers.ts#L342), but we have to be very careful about clipping as that causes render issues.
-- The project relies on realtime shadow casting. And with a considerate amount of active lightsources it manages to use _very_ high resolution [shadow maps](_src/_pages/home/_components/feathers/Feathers.ts#L394) (4K on desktop).
+- The project relies on realtime shadow casting. By limiting the amount of active lightsources we can use _very_ high resolution [shadow maps](_src/_pages/home/_components/feathers/Feathers.ts#L394) (`4K` on desktop), that make quite the difference.
 
 - On scroll we move the camera downwards, creating an interesting parallax effect. [Here](_src/_pages/home/_components/feathers/Feathers.ts#L575) the `lenis ticker` gets directly tied to `gsap's easing callback`, so events are perfectly aligned, and no stuttering occurs.  
 In addition one of the lightsources is tied to mousemovement to allow for a subtle level of interactivity. [A straightfoward map](_src/_pages/home/_components/feathers/Feathers.ts#L517) is used to translate the mouse position.
@@ -69,7 +69,7 @@ In addition one of the lightsources is tied to mousemovement to allow for a subt
 
 While I'm not using it a ton in this project but I'm a big fan of FRP style programming. Particularly in the context of managing events and eventlisteners. [This little util object](_src/_utils/FRP.ts) leverages the `flyd` package to create and manage "observable streams". These provide a more powerful abstraction on top of regular event listeners.  
 
-As mentioned, they're not used a lot in this particular project.
+As mentioned, they're not used a lot in this particular project, but I recommend taking a deeper look into what makes them interesting.
 
 ```
 /////////////////////////
@@ -89,11 +89,13 @@ A separate version of this codebase exists (not included here) that is intended 
 
 `ktx ^4.3.2`
 
-The project relies on `build/compile-time` compression of the `gLTF` assets using Kronos's [KTX toolset](https://github.com/KhronosGroup/KTX-Software).
+The project relies on `build/compile-time` compression of the `gLTF` assets using Khronos's [KTX toolset](https://github.com/KhronosGroup/KTX-Software).
 
 Without getting too into the weeds, it's being used to convert the textures that are part of Blender's `gLTF` exporter to `ktx`  (an intermediate basis texture format that losslessly decompresses on the gpu).
 
-If there's one takeaway you get from this is that when uploading textures to the gpu in non-native formats (`webp`, `png`) a conversion takes place that _will_ block the main render loop and causes the browser's (or `Electron`'s) main thread to stall. Using `ktx` as an intermediate prevent this and ensures smooth loading of assets, even on mobile platforms.
+If there's one takeaway you get from this; is that when uploading textures to the gpu in non-native formats (`webp`, `png`) a conversion takes place that _will_ block the main render loop and causes the browser's (or `Electron`'s) main thread to stall.  
+
+Using `ktx` as an intermediate prevent this and ensures smooth loading of assets. Even on mobile platforms.
 
 ```
 //////////////////
@@ -101,7 +103,7 @@ If there's one takeaway you get from this is that when uploading textures to the
 //////////////////
 ``` 
 Currently the bun builder breaks when importing `three` as is.
-it really shouldn't. but it does. see below.
+It really shouldn't. But it does. See below.
 ```
 [
   24 |   "sideEffects": ["./examples/jsm/nodes/**/*"],
@@ -112,7 +114,7 @@ warn: wildcard sideEffects are not supported yet, which means this package will 
 ```
 While it indicates a warning, it _does_ break the output.
 
-_Temporary resolution:_
+_temporary resolution:_
 
 remove line 24 `  "sideEffects": ["./examples/jsm/nodes/**/*"],` from the three `package.json` before building.
 
